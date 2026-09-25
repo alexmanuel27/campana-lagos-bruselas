@@ -32,7 +32,7 @@ Chlorophyll-a is the positive control because it has an intrinsic visible signat
 | [PROTOCOLO_CONGELADO.md](PROTOCOLO_CONGELADO.md) | Frozen design and decision rules. |
 | [SAMPLING_SITES.md](SAMPLING_SITES.md) | Five candidate water bodies, planning coordinates, managers, and permission status. |
 | [docs/sampling-map.html](docs/sampling-map.html) | Interactive map of the five planning coordinates. |
-| [docs/target-compounds-and-methods.pdf](docs/target-compounds-and-methods.pdf) | Instrument and reagent decision sheet. |
+| [TARGET_COMPOUNDS_AND_METHODS.md](TARGET_COMPOUNDS_AND_METHODS.md) | Editable instrument and reagent decision sheet. |
 | [templates/](templates) | Empty CSV schemas and printable English field sheets. |
 | [data/raw/](data/raw) | Untouched instrument exports and original readings. |
 | [data/processed/](data/processed) | Completed, traceable copies of field and assay records. |
