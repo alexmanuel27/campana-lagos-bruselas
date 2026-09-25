@@ -1,0 +1,56 @@
+{
+  "type": "FeatureCollection",
+  "name": "Brussels lake campaign planning centres",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L01",
+        "name": "Bois de la Cambre main lake",
+        "manager": "City of Brussels",
+        "collection_status": "TO CONFIRM"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.378577, 50.804436]}
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L02",
+        "name": "Ixelles Ponds, north pond",
+        "manager": "Municipality of Ixelles",
+        "collection_status": "TO CONFIRM"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.372646, 50.824414]}
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L03",
+        "name": "Leopold Park pond",
+        "manager": "City of Brussels",
+        "collection_status": "TO CONFIRM"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.378611, 50.838056]}
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L04",
+        "name": "Square Marie-Louise pond",
+        "manager": "City of Brussels",
+        "collection_status": "TO CONFIRM"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.379034, 50.846836]}
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "L05",
+        "name": "Osseghem Park pond",
+        "manager": "City of Brussels",
+        "collection_status": "TO CONFIRM"
+      },
+      "geometry": {"type": "Point", "coordinates": [4.346072, 50.895473]}
+    }
+  ]
+}

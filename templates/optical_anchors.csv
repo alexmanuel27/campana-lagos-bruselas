@@ -1,4 +1,4 @@
-﻿muestra_id,lago_id,fecha_medicion,hora_filtrado,filtro_um,color_visible_a440,longitud_camino_color_cm,equipo_color_id,a254_filtrada,longitud_camino_uv_cm,equipo_uv_id,turbidez_valor,turbidez_unidad,equipo_turbidez_id,incidencia_qc
+﻿sample_id,lake_id,measurement_date,filtration_time,filter_um,visible_colour_a440,colour_path_length_cm,colour_instrument_id,filtered_a254,uv_path_length_cm,uv_instrument_id,turbidity_value,turbidity_unit,turbidity_instrument_id,qc_note
 L01-P1,L01,,,0.45,,,,,,,,,,
 L01-P2,L01,,,0.45,,,,,,,,,,
 L01-P3,L01,,,0.45,,,,,,,,,,

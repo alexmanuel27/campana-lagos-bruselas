@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brussels lake campaign - planning map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ/ZU4M2uK2B6bDQoCbMZC8F/O7rR6M=" crossorigin="">
+  <style>
+    :root { --ink:#123047; --teal:#047c86; --sand:#f6f2ea; --mist:#eaf4f5; --line:#c9d8de; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--ink); background:var(--sand); }
+    main { width:min(1180px,100%); margin:auto; padding:34px 24px; }
+    header { display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; margin-bottom:22px; }
+    h1 { margin:0; max-width:750px; font-size:clamp(2rem,5vw,3.8rem); line-height:.96; letter-spacing:-.04em; }
+    .eyebrow { color:var(--teal); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.75rem; margin:0 0 10px; }
+    .badge { margin:0; padding:8px 12px; color:#885300; background:#fff2d6; border:1px solid #d79720; border-radius:999px; font-weight:700; font-size:.78rem; white-space:nowrap; }
+    .intro { max-width:790px; margin:0 0 24px; font-size:1.05rem; }
+    .layout { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(280px,.8fr); gap:18px; }
+    #map { min-height:590px; border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:0 18px 40px rgba(18,48,71,.12); }
+    .panel { display:grid; align-content:start; gap:10px; }
+    .card { padding:16px; background:#fff; border:1px solid var(--line); border-radius:14px; }
+    .card h2 { margin:0 0 8px; font-size:1rem; }
+    .card p { margin:0; font-size:.9rem; }
+    .site { width:100%; border:1px solid var(--line); border-left:5px solid var(--teal); border-radius:10px; background:#fff; padding:11px 12px; text-align:left; color:var(--ink); cursor:pointer; }
+    .site:hover, .site:focus { background:var(--mist); outline:2px solid var(--teal); outline-offset:2px; }
+    .site strong { display:block; font-size:.88rem; }
+    .site span { display:block; margin-top:2px; color:#5b6b78; font-size:.78rem; }
+    .dot { background:var(--teal); border:3px solid #fff; border-radius:50%; width:18px; height:18px; box-shadow:0 1px 5px #12304788; }
+    .leaflet-popup-content-wrapper { border-radius:10px; } .leaflet-popup-content { color:var(--ink); }
+    footer { margin-top:18px; color:#5b6b78; font-size:.82rem; }
+    @media (max-width:760px) { header,.layout { grid-template-columns:1fr; } #map { min-height:440px; } .badge { justify-self:start; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">MonoSpectro / pre-field planning</p>
+        <h1>Five candidate water bodies in Brussels</h1>
+      </div>
+      <p class="badge">Collection condition: TO CONFIRM</p>
+    </header>
+    <p class="intro">These markers are planning centres, not final sampling stations. Final P1-P3 coordinates are recorded in the field log after access and water collection have been confirmed by the responsible manager.</p>
+    <section class="layout" aria-label="Candidate site map and list">
+      <div id="map" aria-label="Interactive map of Brussels candidate water bodies"></div>
+      <aside class="panel">
+        <div class="card"><h2>How to use this map</h2><p>Select a site to zoom to its planning centre. The full selection record, contacts, and legal-access note are in <a href="../SAMPLING_SITES.md">SAMPLING_SITES.md</a>.</p></div>
+        <div id="sites"></div>
+      </aside>
+    </section>
+    <footer>Map tiles: OpenStreetMap contributors. Planning coordinates are stored in <a href="sampling-sites.geojson">sampling-sites.geojson</a>.</footer>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    const sites = [
+      {id:"L01", name:"Bois de la Cambre main lake", lat:50.804436, lon:4.378577, manager:"City of Brussels"},
+      {id:"L02", name:"Ixelles Ponds, north pond", lat:50.824414, lon:4.372646, manager:"Municipality of Ixelles"},
+      {id:"L03", name:"Leopold Park pond", lat:50.838056, lon:4.378611, manager:"City of Brussels"},
+      {id:"L04", name:"Square Marie-Louise pond", lat:50.846836, lon:4.379034, manager:"City of Brussels"},
+      {id:"L05", name:"Osseghem Park pond", lat:50.895473, lon:4.346072, manager:"City of Brussels"}
+    ];
+    const map = L.map("map", {scrollWheelZoom:false}).setView([50.851, 4.365], 12);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:"&copy; OpenStreetMap contributors"}).addTo(map);
+    const markers = {};
+    sites.forEach(site => {
+      const marker = L.marker([site.lat, site.lon], {icon:L.divIcon({className:"", html:"<div class='dot'></div>", iconSize:[18,18], iconAnchor:[9,9]})})
+        .addTo(map)
+        .bindPopup(`<strong>${site.id} - ${site.name}</strong><br>Planning centre: ${site.lat.toFixed(6)}, ${site.lon.toFixed(6)}<br>Manager: ${site.manager}<br><b>Water collection: TO CONFIRM</b>`);
+      markers[site.id] = marker;
+    });
+    document.querySelector("#sites").innerHTML = sites.map(site => `<button class="site" data-id="${site.id}"><strong>${site.id} - ${site.name}</strong><span>${site.lat.toFixed(6)}, ${site.lon.toFixed(6)} | ${site.manager}</span></button>`).join("");
+    document.querySelectorAll(".site").forEach(button => button.addEventListener("click", () => {
+      const site = sites.find(item => item.id === button.dataset.id);
+      map.flyTo([site.lat, site.lon], 15, {duration:.7});
+      markers[site.id].openPopup();
+    }));
+  </script>
+</body>
+</html>

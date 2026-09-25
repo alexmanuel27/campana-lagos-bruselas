@@ -1,4 +1,4 @@
-﻿muestra_id,lago_id,clorofila_ug_l,incertidumbre_ug_l,metodo_extraccion,fluorometro_id,fecha_referencia,archivo_espectro_sin,incidencia_qc
+﻿sample_id,lake_id,chlorophyll_ug_l,uncertainty_ug_l,extraction_method,fluorometer_id,reference_date,native_spectrum_file,qc_note
 L01-P1,L01,,,,,,,
 L01-P2,L01,,,,,,,
 L01-P3,L01,,,,,,,

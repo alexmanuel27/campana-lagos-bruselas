@@ -1,0 +1,18 @@
+{
+  "type": "SIMULATION - not campaign samples or field results",
+  "synthetic_lakes": 5,
+  "stations_per_lake": 3,
+  "matrix_only_case": {
+    "raw_spike_slope": 0.0,
+    "coloured_spike_slope": 0.0
+  },
+  "reagent_signal_case": {
+    "raw_spike_slope": 0.0,
+    "coloured_spike_slope": 0.9931034482758623,
+    "coloured_skill": 0.9931079029330205
+  },
+  "chlorophyll_positive_control": {
+    "skill": 0.998930062661062
+  },
+  "check": "python3 -m unittest discover -s tests -v"
+}
