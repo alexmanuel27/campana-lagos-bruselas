@@ -1,0 +1,18 @@
+{
+  "tipo": "SIMULACION; no son muestras ni resultados de campo",
+  "lagos_sinteticos": 5,
+  "puntos_por_lago": 3,
+  "sin_senal_nutriente": {
+    "pendiente_cruda": 0.0,
+    "pendiente_coloreada": 0.0
+  },
+  "con_senal_inyectada": {
+    "pendiente_cruda": 0.0,
+    "pendiente_coloreada": 0.9931034482758623,
+    "skill_coloreada": 0.9931079029330205
+  },
+  "clorofila_control": {
+    "skill": 0.998930062661062
+  },
+  "pruebas": "python3 -m unittest discover -s tests -v"
+}
