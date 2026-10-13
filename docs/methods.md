@@ -1,5 +1,7 @@
 # Target compounds and measurement plan
 
+> **Obsoleto (30/09/2026):** los kits y el procedimiento vigentes están en [PROTOCOLO_CONGELADO.md](../PROTOCOLO_CONGELADO.md) v2.0.
+
 This editable pre-field decision sheet defines what is measured, with which instrument, and which liquid reagents are required. It supports the paired-spectrum and standard-addition falsification test. It contains no field results.
 
 ## Measurement system

@@ -1,62 +1,52 @@
-# MonoSpectro Brussels Lake Correlation Campaign
+# Campaña lagos de Bruselas · MonoSpectro
 
-> Can a low-cost visible spectrometer distinguish a real reagent-created nutrient signal from a correlation carried by the water matrix?
+¿Puede un espectrómetro visible de bajo coste distinguir la señal real de un nutriente, creada por el reactivo, de una simple correlación con la matriz del agua? Este repo guarda el protocolo, los datos de campo, los espectros y el análisis. El manuscrito va en otro repo.
 
-This repository holds the **protocol, field records, spectra, reference measurements, analysis code, and results** for the Brussels urban-lake campaign. The manuscript belongs in a separate repository.
+**Estado: antes de campo.** Todavía no hay muestras, espectros ni resultados. Campaña: del 5 al 9 de octubre de 2026.
 
-## Current status
+## Dónde está cada cosa
 
-**Pre-field.** No campaign water samples, spectra, concentrations, or field results are stored here.
+| Qué | Dónde |
+|---|---|
+| Protocolo explicado (v2.0) | `PROTOCOLO_CONGELADO.md` |
+| Protocolo corto para campo | `PROTOCOLO_CAMPO.md` |
+| Lista de compra | `compras_lagos_bruselas_revision_nueva.xlsx` |
+| Lagos: coordenadas, contactos, permisos, mapa y PDF | `map/` |
+| Métodos y reactivos | `docs/methods.md` |
+| Revisión pre-campaña y decisiones pendientes | `docs/revision-2026-09-27.md` |
+| Hojas de campo para imprimir | `templates/field_log.pdf`, `templates/assays.pdf` |
+| Hojas de datos vacías (CSV) | `templates/*.csv` |
+| Datos de campo | `data/raw/` (exportes originales, sin tocar) → `data/processed/` (CSV completados) |
+| Código de análisis | `src/analysis.py` · test: `tests/test_synthetic.py` |
+| Resultados | `results/` |
 
-The frozen protocol fixes the sampling design, standard-addition test, validation partitions, metrics, and failure criteria before campaign data are observed. Five public-park water bodies are listed as **candidates**. Their planning coordinates appear in the [interactive map](docs/sampling-map.html) and in [SAMPLING_SITES.md](SAMPLING_SITES.md). Public access does not itself authorize water collection: the responsible manager must confirm the sampling condition before a bottle is filled.
+## Flujo de trabajo
 
-## The claim under test
-
-```mermaid
-flowchart LR
-    A[Water sample] --> B[Native MonoSpectro spectrum]
-    A --> C[Reference chlorophyll-a]
-    A --> D[Colour reaction and paired spectrum]
-    B --> E{Response after known spike?}
-    E -->|No proportional response| F[Matrix correlation]
-    D -->|Proportional response| G[Reagent-created signal]
-    C --> H[Visible-signal positive control]
-```
-
-Chlorophyll-a is the positive control because it has an intrinsic visible signature. Orthophosphate, ammonium, and nitrite do not. A native-spectrum nutrient model can therefore look accurate by reading pigment, colour, or turbidity covariation. The standard-addition test is the falsification step: a known spike increases the reference concentration while a native visible spectrum should not acquire a nutrient signature; a signal caused by the colour reagent should respond proportionally.
-
-## Repository guide
-
-| Path | Contents |
-| --- | --- |
-| [PROTOCOLO_CONGELADO.md](PROTOCOLO_CONGELADO.md) | Frozen design and decision rules. |
-| [SAMPLING_SITES.md](SAMPLING_SITES.md) | Five candidate water bodies, planning coordinates, managers, and permission status. |
-| [docs/sampling-map.html](docs/sampling-map.html) | Interactive map of the five planning coordinates. |
-| [TARGET_COMPOUNDS_AND_METHODS.md](TARGET_COMPOUNDS_AND_METHODS.md) | Editable instrument and reagent decision sheet. |
-| [templates/](templates) | Empty CSV schemas and printable English field sheets. |
-| [data/raw/](data/raw) | Untouched instrument exports and original readings. |
-| [data/processed/](data/processed) | Completed, traceable copies of field and assay records. |
-| [data/products/](data/products) | Derived analysis tables. |
-| [src/analysis.py](src/analysis.py) | Leave-one-lake-out and standard-addition analysis. |
-| [tests/test_synthetic.py](tests/test_synthetic.py) | Synthetic matrix-confounding and genuine-signal checks. |
-| [results/](results) | Derived outputs only; no field results yet. |
-
-## First run
+1. **Antes de campo:** comprar (`compras_lagos_bruselas_revision_nueva.xlsx`), confirmar los permisos (`map/sites.md`) e imprimir las hojas de `templates/`.
+2. **En campo, el mismo día:** tomar la muestra, medir los sensores y, en MonoSpectro, el espectro sin reactivo, la reacción con el kit, el espectro con reactivo y la lectura del kit.
+3. **Después:**
+   - Copiar los exportes de MonoSpectro, sin modificarlos, a `data/raw/`.
+   - Pasar las hojas de papel a copias de los CSV de `templates/` en `data/processed/`, sin cambiar las cabeceras ni los identificadores.
+4. **Análisis:**
 
 ```sh
 python3 -m pip install -r requirements.txt
-python3 -m unittest discover -s tests -v
-```
-
-When completed records and original spectra exist, run:
-
-```sh
+python3 -m unittest discover -s tests -v        # comprueba que el código funciona
 python3 -m src.analysis data/processed/assays.csv \
   --chlorophyll data/processed/chlorophyll.csv \
   --field-log data/processed/field_log.csv \
   --root . --output results/validation.json
 ```
 
-The program refuses incomplete records and unsupported spectral coverage. It does not generate measurements from empty templates.
+## Reglas para rellenar los CSV
 
-Read [SETUP.md](SETUP.md) for the input contract, and [templates/README.md](templates/README.md) before the first field sheet is completed.
+- Una celda vacía significa "no medido". Nunca se escribe 0 en lugar de un valor que falta.
+- Un valor por debajo del límite del kit se escribe `<L` y no se sustituye por un número.
+- `sample_id` y `assay_id` no se cambian nunca.
+- `actual_delta_mg_l` se calcula a partir del patrón certificado y de los volúmenes pipeteados.
+- La especie química se conserva tal cual: `PO4-P` y `PO4` no son lo mismo. Tampoco lo son `NH4-N` y `NH4`, ni `NO2-N` y `NO2`.
+- Los espectros sin reactivo y con reactivo de un mismo ensayo tienen que tener la misma condición de filtrado.
+- La hora se anota en hora local (`Europe/Brussels`) y las coordenadas en WGS84 decimal.
+- Exporte de MonoSpectro: columnas `Pixel`, `Wavelength_nm` y `abs`, dentro del rango calibrado de 420 a 780 nm.
+
+Para regenerar las plantillas: `python3 templates/build_templates.py` (necesita `reportlab`).

@@ -10,17 +10,29 @@
         "manager": "City of Brussels",
         "collection_status": "TO CONFIRM"
       },
-      "geometry": {"type": "Point", "coordinates": [4.378577, 50.804436]}
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.378577,
+          50.804436
+        ]
+      }
     },
     {
       "type": "Feature",
       "properties": {
         "id": "L02",
-        "name": "Ixelles Ponds, north pond",
-        "manager": "Municipality of Ixelles",
+        "name": "Grand étang Mellaerts",
+        "manager": "Brussels Environment",
         "collection_status": "TO CONFIRM"
       },
-      "geometry": {"type": "Point", "coordinates": [4.372646, 50.824414]}
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.434544,
+          50.827675
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -30,7 +42,13 @@
         "manager": "City of Brussels",
         "collection_status": "TO CONFIRM"
       },
-      "geometry": {"type": "Point", "coordinates": [4.378611, 50.838056]}
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.378611,
+          50.838056
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -40,7 +58,13 @@
         "manager": "City of Brussels",
         "collection_status": "TO CONFIRM"
       },
-      "geometry": {"type": "Point", "coordinates": [4.379034, 50.846836]}
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.379034,
+          50.846836
+        ]
+      }
     },
     {
       "type": "Feature",
@@ -50,7 +74,13 @@
         "manager": "City of Brussels",
         "collection_status": "TO CONFIRM"
       },
-      "geometry": {"type": "Point", "coordinates": [4.346072, 50.895473]}
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.346072,
+          50.895473
+        ]
+      }
     }
   ]
 }

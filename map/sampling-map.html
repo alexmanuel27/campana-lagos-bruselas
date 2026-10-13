@@ -4,7 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brussels lake campaign - planning map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ/ZU4M2uK2B6bDQoCbMZC8F/O7rR6M=" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    /* Leaflet 1.9.4 core layout, inlined so the map works even if leaflet.css is blocked (Safari + file://). */
+    .leaflet-pane,.leaflet-tile,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile-container,.leaflet-pane>svg,.leaflet-pane>canvas,.leaflet-zoom-box,.leaflet-image-layer,.leaflet-layer{position:absolute;left:0;top:0}
+    .leaflet-container{overflow:hidden;position:relative;background:#ddd;outline-offset:1px;font-size:12px}
+    .leaflet-tile,.leaflet-marker-icon{user-select:none;-webkit-user-drag:none}
+    .leaflet-marker-icon{display:block}
+    .leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img{max-width:none!important;max-height:none!important;width:auto;padding:0}
+    .leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}
+    .leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}
+    .leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}
+    .leaflet-zoom-animated{transform-origin:0 0}
+    .leaflet-zoom-anim .leaflet-zoom-animated{transition:transform .25s cubic-bezier(0,0,.25,1)}
+    .leaflet-zoom-anim .leaflet-tile,.leaflet-pan-anim .leaflet-tile{transition:none}
+    .leaflet-fade-anim .leaflet-popup{opacity:0;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}
+    .leaflet-control{position:relative;z-index:800;pointer-events:auto;float:left;clear:both}
+    .leaflet-top,.leaflet-bottom{position:absolute;z-index:1000;pointer-events:none}
+    .leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}
+    .leaflet-right .leaflet-control{float:right}
+    .leaflet-top .leaflet-control{margin-top:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}
+    .leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}
+    .leaflet-bar a{display:block;width:30px;height:30px;line-height:30px;text-align:center;background:#fff;color:#000;text-decoration:none;border-bottom:1px solid #ccc;font:bold 18px 'Lucida Console',Monaco,monospace}
+    .leaflet-bar a:first-child{border-radius:4px 4px 0 0}.leaflet-bar a:last-child{border-radius:0 0 4px 4px;border-bottom:none}
+    .leaflet-control-attribution{margin:0;padding:0 5px;background:rgba(255,255,255,.8);color:#333;line-height:1.4;font-size:11px}
+    .leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}
+    .leaflet-popup-content-wrapper{padding:1px;text-align:left;background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.4)}
+    .leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;min-height:1px}
+    .leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}
+    .leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;transform:rotate(45deg);background:#fff;box-shadow:0 3px 14px rgba(0,0,0,.4)}
+    .leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;text-align:center}
+  </style>
   <style>
     :root { --ink:#123047; --teal:#047c86; --sand:#f6f2ea; --mist:#eaf4f5; --line:#c9d8de; }
     * { box-sizing:border-box; }
@@ -44,7 +74,7 @@
     <section class="layout" aria-label="Candidate site map and list">
       <div id="map" aria-label="Interactive map of Brussels candidate water bodies"></div>
       <aside class="panel">
-        <div class="card"><h2>How to use this map</h2><p>Select a site to zoom to its planning centre. The full selection record, contacts, and legal-access note are in <a href="../SAMPLING_SITES.md">SAMPLING_SITES.md</a>.</p></div>
+        <div class="card"><h2>How to use this map</h2><p>Select a site to zoom to its planning centre. The full selection record, contacts, and legal-access note are in <a href="sites.md">sites.md</a>.</p></div>
         <div id="sites"></div>
       </aside>
     </section>
@@ -54,7 +84,7 @@
   <script>
     const sites = [
       {id:"L01", name:"Bois de la Cambre main lake", lat:50.804436, lon:4.378577, manager:"City of Brussels"},
-      {id:"L02", name:"Ixelles Ponds, north pond", lat:50.824414, lon:4.372646, manager:"Municipality of Ixelles"},
+      {id:"L02", name:"Grand étang Mellaerts", lat:50.827675, lon:4.434544, manager:"Brussels Environment"},
       {id:"L03", name:"Leopold Park pond", lat:50.838056, lon:4.378611, manager:"City of Brussels"},
       {id:"L04", name:"Square Marie-Louise pond", lat:50.846836, lon:4.379034, manager:"City of Brussels"},
       {id:"L05", name:"Osseghem Park pond", lat:50.895473, lon:4.346072, manager:"City of Brussels"}
