@@ -1,0 +1,81 @@
+Ch,Parameter,Value,Unit,Date/time (Europe/Brussels)
+1,Temperature (conductivity),+13.11,degC,2026-10-28 13:26:15
+2,Actual conductivity,+498.07,uS/cm,2026-10-28 13:26:15
+3,Specific conductivity,+644.38,uS/cm,2026-10-28 13:26:15
+4,Salinity,+0.31,PSU,2026-10-28 13:26:15
+5,Resistivity,+2007.7,ohm*cm,2026-10-28 13:26:15
+6,Water density,+1.000,g/cm3,2026-10-28 13:26:15
+7,Total dissolved solids (TDS),+0.42,ppt,2026-10-28 13:26:15
+8,pH,+8.64,pH,2026-10-28 13:26:15
+9,pH electrode potential,-88.8,mV,2026-10-28 13:26:15
+10,ORP,+301.8,mV,2026-10-28 13:26:15
+11,Dissolved oxygen,+9.66,mg/L,2026-10-28 13:26:15
+12,Oxygen saturation,+91.33,%,2026-10-28 13:26:15
+13,Oxygen partial pressure,+144.43,torr,2026-10-28 13:26:15
+14,Temperature (RDO),+13.22,degC,2026-10-28 13:26:15
+15,Supply voltage,+12.056,V,2026-10-28 13:26:15
+16,Barometric pressure,+766.30,mmHg,2026-10-28 13:26:15
+1,Temperature (conductivity),+11.70,degC,2026-10-28 13:36:12
+2,Actual conductivity,+494.80,uS/cm,2026-10-28 13:36:12
+3,Specific conductivity,+663.35,uS/cm,2026-10-28 13:36:12
+4,Salinity,+0.32,PSU,2026-10-28 13:36:12
+5,Resistivity,+2021.0,ohm*cm,2026-10-28 13:36:12
+6,Water density,+1.000,g/cm3,2026-10-28 13:36:12
+7,Total dissolved solids (TDS),+0.43,ppt,2026-10-28 13:36:12
+8,pH,+8.21,pH,2026-10-28 13:36:12
+9,pH electrode potential,-63.8,mV,2026-10-28 13:36:12
+10,ORP,+265.6,mV,2026-10-28 13:36:12
+11,Dissolved oxygen,+9.47,mg/L,2026-10-28 13:36:12
+12,Oxygen saturation,+86.64,%,2026-10-28 13:36:12
+13,Oxygen partial pressure,+137.25,torr,2026-10-28 13:36:12
+14,Temperature (RDO),+11.68,degC,2026-10-28 13:36:12
+15,Supply voltage,+12.065,V,2026-10-28 13:36:12
+16,Barometric pressure,+766.61,mmHg,2026-10-28 13:36:12
+1,Temperature (conductivity),+11.49,degC,2026-10-28 13:46:13
+2,Actual conductivity,+479.54,uS/cm,2026-10-28 13:46:13
+3,Specific conductivity,+646.28,uS/cm,2026-10-28 13:46:13
+4,Salinity,+0.31,PSU,2026-10-28 13:46:13
+5,Resistivity,+2085.3,ohm*cm,2026-10-28 13:46:13
+6,Water density,+1.000,g/cm3,2026-10-28 13:46:13
+7,Total dissolved solids (TDS),+0.42,ppt,2026-10-28 13:46:13
+8,pH,+8.24,pH,2026-10-28 13:46:13
+9,pH electrode potential,-65.7,mV,2026-10-28 13:46:13
+10,ORP,+254.5,mV,2026-10-28 13:46:13
+11,Dissolved oxygen,+9.50,mg/L,2026-10-28 13:46:13
+12,Oxygen saturation,+86.53,%,2026-10-28 13:46:13
+13,Oxygen partial pressure,+137.10,torr,2026-10-28 13:46:13
+14,Temperature (RDO),+11.49,degC,2026-10-28 13:46:13
+15,Supply voltage,+12.065,V,2026-10-28 13:46:13
+16,Barometric pressure,+766.58,mmHg,2026-10-28 13:46:13
+1,Temperature (conductivity),+11.41,degC,2026-10-28 13:56:13
+2,Actual conductivity,+493.64,uS/cm,2026-10-28 13:56:13
+3,Specific conductivity,+666.69,uS/cm,2026-10-28 13:56:13
+4,Salinity,+0.33,PSU,2026-10-28 13:56:13
+5,Resistivity,+2025.8,ohm*cm,2026-10-28 13:56:13
+6,Water density,+1.000,g/cm3,2026-10-28 13:56:13
+7,Total dissolved solids (TDS),+0.43,ppt,2026-10-28 13:56:13
+8,pH,+8.23,pH,2026-10-28 13:56:13
+9,pH electrode potential,-64.9,mV,2026-10-28 13:56:13
+10,ORP,+249.8,mV,2026-10-28 13:56:13
+11,Dissolved oxygen,+9.61,mg/L,2026-10-28 13:56:13
+12,Oxygen saturation,+87.38,%,2026-10-28 13:56:13
+13,Oxygen partial pressure,+138.45,torr,2026-10-28 13:56:13
+14,Temperature (RDO),+11.41,degC,2026-10-28 13:56:13
+15,Supply voltage,+12.074,V,2026-10-28 13:56:13
+16,Barometric pressure,+766.58,mmHg,2026-10-28 13:56:13
+1,Temperature (conductivity),+11.37,degC,2026-10-28 14:06:14
+2,Actual conductivity,+497.58,uS/cm,2026-10-28 14:06:14
+3,Specific conductivity,+672.67,uS/cm,2026-10-28 14:06:14
+4,Salinity,+0.33,PSU,2026-10-28 14:06:14
+5,Resistivity,+2009.7,ohm*cm,2026-10-28 14:06:14
+6,Water density,+1.000,g/cm3,2026-10-28 14:06:14
+7,Total dissolved solids (TDS),+0.44,ppt,2026-10-28 14:06:14
+8,pH,+8.22,pH,2026-10-28 14:06:14
+9,pH electrode potential,-64.5,mV,2026-10-28 14:06:14
+10,ORP,+246.1,mV,2026-10-28 14:06:14
+11,Dissolved oxygen,+9.17,mg/L,2026-10-28 14:06:14
+12,Oxygen saturation,+83.29,%,2026-10-28 14:06:14
+13,Oxygen partial pressure,+131.97,torr,2026-10-28 14:06:14
+14,Temperature (RDO),+11.37,degC,2026-10-28 14:06:14
+15,Supply voltage,+12.065,V,2026-10-28 14:06:14
+16,Barometric pressure,+766.57,mmHg,2026-10-28 14:06:14

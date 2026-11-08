@@ -2,9 +2,9 @@
 
 **Versión 2.0 · 30/09/2026 · redactada antes de tomar ninguna muestra de campaña.**
 
-- Sustituye a la v1.0 del 25/09/2026, archivada sin cambios en [docs/protocolo-v1.0.md](docs/protocolo-v1.0.md).
+- Sustituye a la v1.0 del 25/09/2026, archivada sin cambios en [protocolo-v1.0.md](protocolo-v1.0.md).
 - La versión corta para llevar al campo está en [PROTOCOLO_CAMPO.md](PROTOCOLO_CAMPO.md).
-- Todo lo marcado **POR CONFIRMAR** debe cerrarse antes del piloto.
+- Todo lo marcado **POR CONFIRMAR** debe cerrarse antes del primer día de campo.
 - Cualquier cambio posterior se añade al registro de cambios (§13), indicando si ya se habían visto datos de campaña.
 
 ---
@@ -47,7 +47,7 @@ El diseño del test, el modelo, las métricas y los criterios de fallo (§9–§
 | L04 | Square Marie-Louise | 50.846836, 4.379034 | Ciudad de Bruselas |
 | L05 | Parc d'Osseghem | 50.895473, 4.346072 | Ciudad de Bruselas |
 
-- **Permiso de toma de agua:** POR CONFIRMAR en los cinco lagos. Sin permiso escrito no se toma agua. Detalle y contactos en [map/sites.md](map/sites.md).
+- **Permiso de toma de agua:** POR CONFIRMAR en los cinco lagos. Sin permiso escrito no se toma agua. Detalle y contactos en [map/sites.md](../map/sites.md).
 - **Estaciones:** tres por lago.
   - P1, cerca de la entrada de agua.
   - P3, cerca de la salida.
@@ -71,9 +71,10 @@ El diseño del test, el modelo, las métricas y los criterios de fallo (§9–§
 | Equipo | Uso |
 |---|---|
 | MonoSpectro (420–780 nm calibrado) | Espectros sin reactivo y con reactivo |
-| Sonda multiparámetro | Temperatura, conductividad, pH y O₂ disuelto in situ |
-| Turbidímetro | Turbidez de cada muestra |
-| Fluorómetro + material de extracción | Referencia de clorofila-a (método de P1, Daniela) |
+| Sonda multiparámetro (tipo Aqua TROLL) | Temperatura, conductividad (real y específica), salinidad, TDS, pH, ORP, O₂ disuelto (mg/L y %), presión barométrica. **No mide turbidez** |
+| ~~Turbidímetro~~ | **No disponible.** En su lugar, la atenuación por partículas medida con MonoSpectro: espectro sin filtrar − espectro filtrado, a 750–780 nm. Se llama así y **no se presenta como turbidez** |
+| Fluorómetro propio (ESP32 + AS7265X, repo `Fluorometer`; **geometría de 180°, en transmisión**: los canales de 410 y 435 nm se saturan con el LED y se excluyen) + extracción en etanol | Clorofila-a en el extracto con Chl = −0,0621 + 2,8428·ln(B645/I645) µg/mL, **calculada a partir del CSV** porque el firmware aún lleva la fórmula antigua. Un blanco de etanol por sesión. Rango calibrado: 0,024–8 µg/mL de extracto |
+| Espectrofotómetro de laboratorio (comprobación de clorofila) | El mismo extracto leído por el método en etanol (ISO 10260, 665/750 nm). Es la comprobación independiente, porque el fluorómetro solo está validado con diluciones de un único extracto |
 | Pipetas y material de laboratorio | Micropipetas, puntas, matraces aforados, agua destilada, cubetas de 10 mm, botellas |
 | **Espectrofotómetro de laboratorio** (el "comercial" de P1) | **Lectura de referencia de los kits.** **POR CONFIRMAR** que está disponible esa semana y que llega a 540 y 690 nm |
 
@@ -107,11 +108,13 @@ El diseño del test, el modelo, las métricas y los criterios de fallo (§9–§
 
 ## 4. Organización de la semana
 
-Se muestrea **un lago por día**, del 5 al 9 de octubre. El orden es POR CONFIRMAR, según lleguen los permisos.
+**El jueves 22 de octubre de 2026 es solo un PILOTO** (ver [PILOTO.md](PILOTO.md)). Sus datos van etiquetados como piloto y quedan fuera del análisis. La campaña, un lago por día durante 5 días, empieza **cuando lleguen los patrones**: fecha POR CONFIRMAR. Sin patrones no hay test de adición.
+
+**Cambio de hora:** el domingo 25 de octubre Bélgica pasa de CEST (UTC+2) a CET (UTC+1). En cada registro se anota la hora local **y** el desfase (`+02:00` o `+01:00`).
 
 | Momento | Dónde | Quién | Qué |
 |---|---|---|---|
-| Antes de salir | Laboratorio | Ambos | Calibrar la sonda y el turbidímetro. Preparar las diluciones de trabajo. Etiquetar tubos y botellas. Nevera con acumuladores |
+| Antes de salir | Laboratorio | Ambos | Calibrar la sonda. Preparar las diluciones de trabajo. Etiquetar tubos y botellas. Nevera con acumuladores |
 | Mañana (~2–3 h) | Lago | Ambos | Estaciones P1–P3, sensores, toma, filtración inmediata, filtros de clorofila y cribado JBL (§5) |
 | Traslado | — | — | Nevera a ~4 °C y a oscuras. Se anota la hora |
 | Tarde (empezar en < 4 h desde la toma) | Laboratorio | Alex: MonoSpectro · Daniela: reacciones y referencia | Espectros, adiciones, reacciones y lecturas (§6) |
@@ -143,7 +146,7 @@ Se muestrea **un lago por día**, del 5 al 9 de octubre. El orden es POR CONFIRM
    | E · reserva Cruz | Conservación según el plan | Validación del prototipo |
 
    **Volumen de C:** tiene que cubrir los 4 niveles de los 3 analitos, más los duplicados de P2, los blancos de muestra y un 30 % de reserva. **POR CONFIRMAR** cuando se conozca el volumen de muestra por ensayo de cada prospecto.
-5. **Turbidez:** se mide sobre la alícuota A, en el turbidímetro, y se anota la unidad.
+5. **Partículas:** no hay turbidímetro. La atenuación por partículas se calcula en el laboratorio con MonoSpectro (§3.1).
 6. **Cribado JBL** (NH₄, NO₂, NO₃, PO₄), sobre la alícuota C.
    - Se anota el valor de la tarjeta.
    - **No es referencia.** Solo sirve para saber de antemano si alguna muestra va a salir del rango del kit y habrá que diluirla, y como respaldo si falla la referencia.
@@ -260,10 +263,10 @@ Nada se excluye por ser alto, bajo o porque empeore una métrica. Todo lo exclui
 - **Residuos:** todo va a una garrafa de residuos etiquetada, tanto en el lago como en el laboratorio. **Nada vuelve al lago.**
 - **Conservación:** la enzima y los reactivos Roche se guardan a 2–8 °C.
 
-## 12. POR CONFIRMAR antes del piloto (02/10)
+## 12. POR CONFIRMAR antes de salir al campo (22/10)
 
 1. Permiso escrito de toma de agua en los cinco lagos.
-2. Espectrofotómetro de laboratorio disponible del 5 al 9 de octubre, y que cubra 540 y 690 nm.
+2. Espectrofotómetro de laboratorio disponible todos los días de campo, y que cubra 540 y 690 nm.
 3. λ de lectura del fosfato 1.14848 y del kit Roche según sus prospectos. Ambas deben estar dentro de 430–770 nm.
 4. L de cada kit para cubeta de 10 mm, y forma química (PO₄-P, NH₄-N, NO₂) en la que informa cada uno.
 5. **Kit Roche:** con unos 64 ensayos no alcanza para ~70 ensayos de nitrito más los blancos y el nitrato. Opciones: comprar un segundo kit, o cambiar el nitrito a Spectroquant 1.14776 (335 tests).
@@ -278,4 +281,6 @@ Nada se excluye por ser alto, bajo o porque empeore una métrica. Todo lo exclui
 |---|---|---|
 | 2026-09-25 | Versión 1.0 (en inglés) | No |
 | 2026-09-27 | Reorganización del repositorio; L02 pasa de los estanques de Ixelles a Mellaerts | No |
-| 2026-09-30 | **Versión 2.0**: todo se mide el mismo día; kits Spectroquant y Roche como referencia; JBL solo como cribado; patrones preparados por Daniela; filtros de 0,2 µm; nitrato como variable de contexto. Diseño, análisis y criterios de fallo sin cambios. La v1.0 queda archivada en `docs/protocolo-v1.0.md` | No |
+| 2026-09-30 | **Versión 2.0**: todo se mide el mismo día; kits Spectroquant y Roche como referencia; JBL solo como cribado; patrones preparados por Daniela; filtros de 0,2 µm; nitrato como variable de contexto. Diseño, análisis y criterios de fallo sin cambios. La v1.0 queda archivada en `protocolo/protocolo-v1.0.md` | No |
+| 2026-10-20 | Campaña aplazada: empieza el 22/10/2026 (antes 5–9/10). Se añade el registro del desfase horario por el cambio de hora del 25/10. Diseño sin cambios | No |
+| 2026-10-21 | **v2.1**: el 22/10 pasa a ser un piloto sin adición patrón (los patrones no han llegado); la campaña empieza cuando lleguen. No hay turbidímetro: se sustituye por la atenuación por partículas de MonoSpectro y se quita la turbidez de la ablación de sensores (`src/analysis.py`). Clorofila con el fluorómetro propio, comprobada con el espectrofotómetro (ISO 10260). Diseño y criterios sin cambios | No |

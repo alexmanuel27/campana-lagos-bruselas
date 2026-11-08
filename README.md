@@ -2,27 +2,25 @@
 
 ¿Puede un espectrómetro visible de bajo coste distinguir la señal real de un nutriente, creada por el reactivo, de una simple correlación con la matriz del agua? Este repo guarda el protocolo, los datos de campo, los espectros y el análisis. El manuscrito va en otro repo.
 
-**Estado: antes de campo.** Todavía no hay muestras, espectros ni resultados. Campaña: del 5 al 9 de octubre de 2026.
+**Estado (05/11/2026):** piloto del 28/10 analizado. El lago no es accesible por el bajo nivel: el modelo se entrenará en 4 escenarios de acuario (protocolo v3.0) y se probará después en el lago. Fechas POR CONFIRMAR.
 
 ## Dónde está cada cosa
 
-| Qué | Dónde |
+| Carpeta | Qué hay |
 |---|---|
-| Protocolo explicado (v2.0) | `PROTOCOLO_CONGELADO.md` |
-| Protocolo corto para campo | `PROTOCOLO_CAMPO.md` |
-| Lista de compra | `compras_lagos_bruselas_revision_nueva.xlsx` |
-| Lagos: coordenadas, contactos, permisos, mapa y PDF | `map/` |
-| Métodos y reactivos | `docs/methods.md` |
-| Revisión pre-campaña y decisiones pendientes | `docs/revision-2026-09-27.md` |
-| Hojas de campo para imprimir | `templates/field_log.pdf`, `templates/assays.pdf` |
-| Hojas de datos vacías (CSV) | `templates/*.csv` |
-| Datos de campo | `data/raw/` (exportes originales, sin tocar) → `data/processed/` (CSV completados) |
-| Código de análisis | `src/analysis.py` · test: `tests/test_synthetic.py` |
-| Resultados | `results/` |
+| `protocolo/` | `PILOTO.md` (piloto del 28/10) · `PROTOCOLO_CAMPO.md` (versión corta) · `PROTOCOLO_CONGELADO.md` (v3.0 explicada) · `protocolo-v2.3.md`, `protocolo-v2.2.md`, `protocolo-v2.1.md` y `protocolo-v1.0.md` (archivadas) |
+| `map/` | Los 5 lagos: coordenadas, contactos, permisos, mapa interactivo y PDF |
+| `templates/` | Hojas de campo para imprimir (PDF) y CSV vacíos |
+| `data/raw/` | Exportes originales de MonoSpectro, el fluorómetro y la sonda, sin tocar. Una carpeta por día (`AAAA-MM-DD/`) |
+| `data/processed/` | CSV completados a partir de las plantillas |
+| `src/` · `tests/` | Código de análisis y su test |
+| `results/` | Resultados (por ahora solo la simulación) |
+| `compras/` | Lista de compra |
+| `docs/historial/` | Documentos superados, conservados para trazabilidad |
 
 ## Flujo de trabajo
 
-1. **Antes de campo:** comprar (`compras_lagos_bruselas_revision_nueva.xlsx`), confirmar los permisos (`map/sites.md`) e imprimir las hojas de `templates/`.
+1. **Antes de campo:** comprar (`compras/compras.xlsx`), confirmar los permisos (`map/sites.md`) e imprimir las hojas de `templates/`.
 2. **En campo, el mismo día:** tomar la muestra, medir los sensores y, en MonoSpectro, el espectro sin reactivo, la reacción con el kit, el espectro con reactivo y la lectura del kit.
 3. **Después:**
    - Copiar los exportes de MonoSpectro, sin modificarlos, a `data/raw/`.

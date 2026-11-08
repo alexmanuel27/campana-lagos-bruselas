@@ -157,9 +157,8 @@ def load_assays(path: Path, root: Path, field_log: Path | None = None):
     if field_log:
         with field_log.open(newline="", encoding="utf-8-sig") as handle:
             field_rows = [row for row in csv.DictReader(handle) if row["field_duplicate"] == "NO"]
-        columns = ("temperature_c", "conductivity_us_cm", "ph", "dissolved_oxygen_mg_l", "turbidity_value")
-        if len({row["turbidity_unit"] for row in field_rows}) != 1:
-            raise ValueError("Turbidity units differ between samples")
+        # No turbidimeter in the campaign (v2.1): sensor ablation uses the probe variables only.
+        columns = ("temperature_c", "conductivity_us_cm", "ph", "dissolved_oxygen_mg_l")
         for row in field_rows:
             if any(not row[column] for column in columns):
                 raise ValueError(f"Incomplete sensor record: {row['sample_id']}")

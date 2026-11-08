@@ -14,7 +14,7 @@ Native visible spectra will not be claimed to directly detect a nutrient. A254 r
 
 ## 2. Candidate sites, stations, and depth
 
-The candidate water bodies are fixed in [map/sites.md](map/sites.md). Their planning centres are visible in [map/sampling-map.html](map/sampling-map.html). A candidate can be sampled only after its manager confirms the collection condition. There is no site substitution after campaign field data have been observed.
+The candidate water bodies are fixed in [map/sites.md](../map/sites.md). Their planning centres are visible in [map/sampling-map.html](../map/sampling-map.html). A candidate can be sampled only after its manager confirms the collection condition. There is no site substitution after campaign field data have been observed.
 
 At each sampled lake, define three accessible shoreline stations: P1 near an identifiable inflow, P3 near an identifiable outflow, and P2 between them. Where inflow or outflow cannot be identified, use the accessible north end for P1, south end for P3, and a midpoint for P2; record that rule. Aim for at least 30 m separation where site geometry allows. Record the final WGS84 coordinates, access route, and depth for every station. Do not enter the water or disturb the shoreline.
 
