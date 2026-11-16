@@ -1,4 +1,4 @@
-# Piloto: viernes 23/10/2026
+# Piloto: 28/10/2026 (plan escrito para el 23/10)
 
 1 lago (permiso ✔): **Étang des Pêcheries / Terlindenvijver** (Auderghem; punto de referencia 50.812806, 4.412256) · 3 puntos (P1, P2, P3) · datos etiquetados **PILOTO**: no entran en el análisis.
 Sin patrones: hoy **no** hay adición patrón. Hora: anotar siempre con su desfase (`+02:00`).
@@ -25,7 +25,7 @@ Anotar en cada porción el volumen y la hora de toma y de filtrado.
 3. Para cada punto y cada kit, sobre la porción **filtrada**: MonoSpectro → reactivo según el prospecto (tiempo exacto) → MonoSpectro → **espectrofotómetro comercial con la misma cubeta**.
 4. Blanco de reactivo (agua destilada + reactivo), 5 veces por kit, leído en los dos equipos.
 5. **Dilución en P2** (100 / 50 / 25 % con agua destilada), con los 3 kits.
-6. Copiar los archivos crudos, sin tocarlos, a `data/raw/2026-10-23_PILOTO/`.
+6. Copiar los archivos crudos, sin tocarlos, a `data/raw/28-10/`.
 
 ## Luz verde para la campaña (fijado antes del piloto)
 | Prueba | Pasa si |

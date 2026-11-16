@@ -8,15 +8,18 @@
 
 | Carpeta | Qué hay |
 |---|---|
-| `protocolo/` | `PILOTO.md` (piloto del 28/10) · `PROTOCOLO_CAMPO.md` (versión corta) · `PROTOCOLO_CONGELADO.md` (v3.0 explicada) · `protocolo-v2.3.md`, `protocolo-v2.2.md`, `protocolo-v2.1.md` y `protocolo-v1.0.md` (archivadas) |
+| `protocolo/` | `PROTOCOLO_CONGELADO.md`: **protocolo vigente (v3.0)**. `archivo/`: versiones anteriores (v1.0, v2.1, v2.2, v2.3), `PROTOCOLO_CAMPO.md` (obsoleto) y `PILOTO.md` (plan del piloto) |
 | `map/` | Los 5 lagos: coordenadas, contactos, permisos, mapa interactivo y PDF |
 | `templates/` | Hojas de campo para imprimir (PDF) y CSV vacíos |
-| `data/raw/` | Exportes originales de MonoSpectro, el fluorómetro y la sonda, sin tocar. Una carpeta por día (`AAAA-MM-DD/`) |
+| `data/raw/` | Exportes originales de MonoSpectro, el fluorómetro y la sonda, sin tocar. Una carpeta por día (`DD-MM/`). Hoy solo `28-10/` (piloto; ver su `LEEME.md`) |
 | `data/processed/` | CSV completados a partir de las plantillas |
-| `src/` · `tests/` | Código de análisis y su test |
-| `results/` | Resultados (por ahora solo la simulación) |
+| `src/` · `tests/` | `campana.py` (análisis de la campaña), `piloto.py` (piloto), `analysis.py` (versión antigua, para la simulación) y sus tests |
+| `results/` | `piloto_28-10/` (análisis del piloto) y `synthetic_validation.json` (simulación, no son datos reales) |
+| `reactivos/` | Manual Roche de nitrito/nitrato (`11746081001.pdf`) y su resumen paso a paso en español (`.md` y `.pdf`) |
 | `compras/` | Lista de compra |
 | `docs/historial/` | Documentos superados, conservados para trazabilidad |
+
+Para redactar el informe: el diseño y sus decisiones están en `protocolo/PROTOCOLO_CONGELADO.md`; lo único medido hasta ahora es el piloto (`data/raw/28-10/` y `results/piloto_28-10/`). Lo marcado POR CONFIRMAR en esos documentos no está confirmado.
 
 ## Flujo de trabajo
 

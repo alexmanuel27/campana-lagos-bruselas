@@ -1,0 +1,17 @@
+Ch,Parameter,Value,Unit,Date/time (Europe/Brussels)
+1,Temperature (conductivity),+16.33,degC,2026-11-11 16:51:27
+2,Actual conductivity,+567.99,uS/cm,2026-11-11 16:51:27
+3,Specific conductivity,+680.70,uS/cm,2026-11-11 16:51:27
+4,Salinity,+0.33,PSU,2026-11-11 16:51:27
+5,Resistivity,+1760.6,ohm*cm,2026-11-11 16:51:27
+6,Water density,+0.999,g/cm3,2026-11-11 16:51:27
+7,Total dissolved solids (TDS),+0.44,ppt,2026-11-11 16:51:27
+8,pH,+8.90,pH,2026-11-11 16:51:27
+9,pH electrode potential,-104.3,mV,2026-11-11 16:51:27
+10,ORP,+181.4,mV,2026-11-11 16:51:27
+11,Dissolved oxygen,+9.80,mg/L,2026-11-11 16:51:27
+12,Oxygen saturation,+102.6,%,2026-11-11 16:51:27
+13,Oxygen partial pressure,+156.43,torr,2026-11-11 16:51:27
+14,Temperature (RDO),+16.29,degC,2026-11-11 16:51:27
+15,Supply voltage,+12.020,V,2026-11-11 16:51:27
+16,Barometric pressure,+742.12,mmHg,2026-11-11 16:51:27
